@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "arangodb-pythongraph"
+version = "0.0.1"
+description = "Fetch an AQL directly to a Python graph representation (In NetworkX, IGraph, or Graph-Tool)"
+authors = ["Avi Aminov <aviaminov@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pyintergraph = "^1.2.0"
+python-arango = "^5.4.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.4.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
