@@ -70,7 +70,7 @@ def _execute_to_pythongraph(aql: AQL, query: str, label='_id', **kwargs):
     return InterGraph(nodes, node_labels, node_attributes, edges, edge_attributes, is_directed)
 
 
-def register_function():
+def register():
     """Registers the query to pythongraph function as part of the AQL object.
 
     Before:

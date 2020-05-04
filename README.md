@@ -20,7 +20,9 @@ All queries **must** return path objects.
 ## Simple extraction
 
 ```
-db = ... # ArangoDB connection (use python-arango)
+from arangodb_pythongraph import execute_to_pygraph
+
+db = ... # ArangoDB connection (use python-arango package)
 example_query = '''
   FOR v0 in vertex_collection
     FOR e, v, p IN OUTBOUND v0 edge_collection
