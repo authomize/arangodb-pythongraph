@@ -1,0 +1,3 @@
+FOR c in @@character_collection
+    FOR v, e, p in ANY c @@character_edge_collection
+        RETURN p

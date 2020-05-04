@@ -12,6 +12,7 @@ python-arango = "^5.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.1"
+networkx = "^2.4"
 
 [build-system]
 requires = ["poetry>=0.12"]

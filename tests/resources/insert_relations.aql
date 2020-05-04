@@ -1,0 +1,66 @@
+with @@character_collection, @@character_edge_collection
+
+LET data = [
+    {
+        "parent": { "name": "Ned", "surname": "Stark" },
+        "child": { "name": "Robb", "surname": "Stark" }
+    }, {
+        "parent": { "name": "Ned", "surname": "Stark" },
+        "child": { "name": "Sansa", "surname": "Stark" }
+    }, {
+        "parent": { "name": "Ned", "surname": "Stark" },
+        "child": { "name": "Arya", "surname": "Stark" }
+    }, {
+        "parent": { "name": "Ned", "surname": "Stark" },
+        "child": { "name": "Bran", "surname": "Stark" }
+    }, {
+        "parent": { "name": "Catelyn", "surname": "Stark" },
+        "child": { "name": "Robb", "surname": "Stark" }
+    }, {
+        "parent": { "name": "Catelyn", "surname": "Stark" },
+        "child": { "name": "Sansa", "surname": "Stark" }
+    }, {
+        "parent": { "name": "Catelyn", "surname": "Stark" },
+        "child": { "name": "Arya", "surname": "Stark" }
+    }, {
+        "parent": { "name": "Catelyn", "surname": "Stark" },
+        "child": { "name": "Bran", "surname": "Stark" }
+    }, {
+        "parent": { "name": "Ned", "surname": "Stark" },
+        "child": { "name": "Jon", "surname": "Snow" }
+    }, {
+        "parent": { "name": "Tywin", "surname": "Lannister" },
+        "child": { "name": "Jaime", "surname": "Lannister" }
+    }, {
+        "parent": { "name": "Tywin", "surname": "Lannister" },
+        "child": { "name": "Cersei", "surname": "Lannister" }
+    }, {
+        "parent": { "name": "Tywin", "surname": "Lannister" },
+        "child": { "name": "Tyrion", "surname": "Lannister" }
+    }, {
+        "parent": { "name": "Cersei", "surname": "Lannister" },
+        "child": { "name": "Joffrey", "surname": "Baratheon" }
+    }, {
+        "parent": { "name": "Jaime", "surname": "Lannister" },
+        "child": { "name": "Joffrey", "surname": "Baratheon" }
+    }
+]
+
+FOR rel in data
+    LET parentId = FIRST(
+        FOR c IN @@character_collection
+            FILTER c.name == rel.parent.name
+            FILTER c.surname == rel.parent.surname
+            LIMIT 1
+            RETURN c._id
+    )
+    LET childId = FIRST(
+        FOR c IN @@character_collection
+            FILTER c.name == rel.child.name
+            FILTER c.surname == rel.child.surname
+            LIMIT 1
+            RETURN c._id
+    )
+    FILTER parentId != null AND childId != null
+    INSERT { _from: childId, _to: parentId } INTO @@character_edge_collection
+    RETURN NEW
