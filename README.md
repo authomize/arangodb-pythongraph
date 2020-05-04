@@ -9,7 +9,7 @@ pip install arangodb-pythongraph
 Duh.
 
 ## Graph frameworks
-This package is based on (pyintergraph)[https://pypi.org/project/pyintergraph/] and thus supports extraction to NetworkX, python-IGraph and Graph-Tools graph objects.
+This package is based on [pyintergraph](https://pypi.org/project/pyintergraph/) and thus supports extraction to NetworkX, python-IGraph and Graph-Tools graph objects.
 However, these libraries are not defined as requirements for this package and if you want to extract to each of them you are required to install the necessary package accordingly.
 
 
