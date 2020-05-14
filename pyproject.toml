@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "arangodb-pythongraph"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fetch an AQL directly to a Python graph representation (In NetworkX, IGraph, or Graph-Tool)"
 authors = ["Avi Aminov <aviaminov@gmail.com>"]
 license = "MIT"
