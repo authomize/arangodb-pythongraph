@@ -19,17 +19,14 @@ def _split_graph_obj_to_vertices_edges(res: Dict):
 def _attr_cleanup(attrs: dict):
     keys_to_remove = [k for k, v in attrs.items()
                       if v is None
-                      or (isinstance(v, list) and len(v) < 1)
-                      or (isinstance(v, dict))
-                      #                      or k in ['properties', 'source']
+                      or (isinstance(v, (list, dict)))
                       ]
     for k in keys_to_remove:
         attrs.pop(k)
-    #     if 'name' in attrs:
-    #         attrs['original_name'] = attrs.pop('name')
-    unicode_issues = [k for k, v in attrs.items()
+
+    string_keys = [k for k, v in attrs.items()
                       if isinstance(v, str)]
-    for k in unicode_issues:
+    for k in string_keys:
         attrs[k] = attrs[k].encode('ascii', 'xmlcharrefreplace').decode()
 
 
